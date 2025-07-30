@@ -49,7 +49,7 @@ if (isset($_POST['user_name']) && isset($_POST['password']) && isset($_POST['ful
 	   $data = array($full_name, $user_name, $password, "employee", $profile_image);
 	   insert_user_with_image($conn, $data);
 
-	   $em = "User created successfully";
+	   $em = "Хэрэглэгчийг амжилттай үүсгэлээ";
 	header("Location: ../add-user.php?success=$em");
 	exit();
 

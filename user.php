@@ -21,7 +21,7 @@ if (isset($_SESSION['role']) && isset($_SESSION['id']) && $_SESSION['role'] == "
 	<div class="body">
 		<?php include "inc/nav.php" ?>
 		<section class="section-1">
-<h4 class="title">Хэрэглэгчидийг удирдах <a href="add-user.php">Хэрэглэгч нэмэх</a></h4>
+<h4 class="title">Ажилтан удирдах <a href="add-user.php">Ажилтан нэмэх</a></h4>
 			<?php if (isset($_GET['success'])) {?>
 			<div class="success" role="alert">
 			  <?php echo stripcslashes($_GET['success']); ?>

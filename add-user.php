@@ -6,7 +6,7 @@ if (isset($_SESSION['role']) && isset($_SESSION['id']) && $_SESSION['role'] == "
 <!DOCTYPE html>
 <html>
 <head>
-<title>Хэрэглэгч нэмэх</title>
+<title>Ажилтан нэмэх</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/style.css">
 
@@ -17,7 +17,7 @@ if (isset($_SESSION['role']) && isset($_SESSION['id']) && $_SESSION['role'] == "
 	<div class="body">
 		<?php include "inc/nav.php" ?>
 		<section class="section-1">
-<h4 class="title">Хэрэглэгч нэмэх <a href="user.php">Хэрэглэгчид</a></h4>
+<h4 class="title">Ажилтан нэмэх <a href="user.php">Ажилтнууд</a></h4>
 <form class="form-1"
 				  method="POST"
 				  action="app/add-user.php"
@@ -39,8 +39,8 @@ if (isset($_SESSION['role']) && isset($_SESSION['id']) && $_SESSION['role'] == "
 				</div>
 				
 				<div class="input-holder">
-<lable>Хэрэглэгчийн нэр</lable>
-<input type="text" name="user_name" class="input-1" placeholder="Хэрэглэгчийн нэр"><br>
+<lable>Хэрэглэгчийн нэвтрэх нэр</lable>
+<input type="text" name="user_name" class="input-1" placeholder="Хэрэглэгчийн нэвтрэх нэр"><br>
 				</div>
 				<div class="input-holder">
 <lable>Нууц үг</lable>
