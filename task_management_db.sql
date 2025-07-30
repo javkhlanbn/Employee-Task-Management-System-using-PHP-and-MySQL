@@ -92,7 +92,8 @@ CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `role` enum('admin','employee') NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `profile_image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --

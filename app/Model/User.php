@@ -13,8 +13,8 @@ function get_all_users($conn){
 }
 
 
-function insert_user($conn, $data){
-	$sql = "INSERT INTO users (full_name, username, password, role) VALUES(?,?,?, ?)";
+function insert_user_with_image($conn, $data){
+	$sql = "INSERT INTO users (full_name, username, password, role, profile_image) VALUES(?,?,?,?,?)";
 	$stmt = $conn->prepare($sql);
 	$stmt->execute($data);
 }
@@ -44,8 +44,8 @@ function get_user_by_id($conn, $id){
 	return $user;
 }
 
-function update_profile($conn, $data){
-	$sql = "UPDATE users SET full_name=?,  password=? WHERE id=? ";
+function update_profile_with_image($conn, $data){
+	$sql = "UPDATE users SET full_name=?, password=?, profile_image=? WHERE id=? ";
 	$stmt = $conn->prepare($sql);
 	$stmt->execute($data);
 }

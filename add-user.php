@@ -18,9 +18,10 @@ if (isset($_SESSION['role']) && isset($_SESSION['id']) && $_SESSION['role'] == "
 		<?php include "inc/nav.php" ?>
 		<section class="section-1">
 <h4 class="title">Хэрэглэгч нэмэх <a href="user.php">Хэрэглэгчид</a></h4>
-			<form class="form-1"
+<form class="form-1"
 				  method="POST"
-				  action="app/add-user.php">
+				  action="app/add-user.php"
+				  enctype="multipart/form-data">
 				  <?php if (isset($_GET['error'])) {?>
 			<div class="danger" role="alert">
 			  <?php echo stripcslashes($_GET['error']); ?>
@@ -36,6 +37,7 @@ if (isset($_SESSION['role']) && isset($_SESSION['id']) && $_SESSION['role'] == "
 <lable>Бүтэн нэр</lable>
 <input type="text" name="full_name" class="input-1" placeholder="Бүтэн нэр"><br>
 				</div>
+				
 				<div class="input-holder">
 <lable>Хэрэглэгчийн нэр</lable>
 <input type="text" name="user_name" class="input-1" placeholder="Хэрэглэгчийн нэр"><br>

@@ -24,7 +24,8 @@ if (isset($_SESSION['role']) && isset($_SESSION['id']) && $_SESSION['role'] == "
 <h4 class="title">Даалгавар үүсгэх</h4>
 		   <form class="form-1"
 				  method="POST"
-				  action="app/add-task.php">
+				  action="app/add-task.php"
+				  enctype="multipart/form-data">
 				  <?php if (isset($_GET['error'])) {?>
 			<div class="danger" role="alert">
 			  <?php echo stripcslashes($_GET['error']); ?>
@@ -48,7 +49,7 @@ if (isset($_SESSION['role']) && isset($_SESSION['id']) && $_SESSION['role'] == "
 <lable>Дуусах огноо</lable>
 <input type="date" name="due_date" class="input-1" placeholder="Дуусах огноо"><br>
 				</div>
-				<div class="input-holder">
+			   <div class="input-holder">
 <lable>Хариуцагч</lable>
 					<select name="assigned_to" class="input-1">
 <option value="0">Ажилтан сонгох</option>
@@ -58,7 +59,11 @@ if (isset($_SESSION['role']) && isset($_SESSION['id']) && $_SESSION['role'] == "
 				  <option value="<?=$user['id']?>"><?=$user['full_name']?></option>
 						<?php } } ?>
 					</select><br>
-				</div>
+			   </div>
+			   <div class="input-holder">
+<lable>Файл хавсаргах</lable>
+<input type="file" name="attachment" class="input-1"><br>
+			   </div>
 <button class="edit-btn">Үүсгэх</button>
 			</form>
 			

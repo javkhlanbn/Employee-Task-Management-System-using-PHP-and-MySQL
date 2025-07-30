@@ -6,7 +6,7 @@
 			
 			<?php 
 
-               if($_SESSION['role'] == "employee"){
+			   if($_SESSION['role'] == "employee"){
 			 ?>
 			 <!-- Employee Navigation Bar -->
 			<ul id="navList">
@@ -34,16 +34,22 @@
 						<span>Мэдэгдэл</span>
 					</a>
 				</li>
-				<li>
-					<a href="logout.php">
-						<i class="fa fa-sign-out" aria-hidden="true"></i>
-						<span>Гарах</span>
-					</a>
-				</li>
+			   <li>
+				   <a href="chat.php" class="<?php if(basename($_SERVER['PHP_SELF'])=='chat.php') echo 'active'; ?>">
+					   <i class="fa fa-comments" aria-hidden="true"></i>
+					   <span>Чат</span>
+				   </a>
+			   </li>
+			   <li>
+				   <a href="logout.php">
+					   <i class="fa fa-sign-out" aria-hidden="true"></i>
+					   <span>Гарах</span>
+				   </a>
+			   </li>
 			</ul>
 		<?php }else { ?>
 			<!-- Admin Navigation Bar -->
-            <ul id="navList">
+			<ul id="navList">
 				<li>
 					<a href="index.php">
 						<i class="fa fa-tachometer" aria-hidden="true"></i>
@@ -68,12 +74,18 @@
 						<span>Бүх даалгаврууд</span>
 					</a>
 				</li>
-				<li>
-					<a href="logout.php">
-						<i class="fa fa-sign-out" aria-hidden="true"></i>
-						<span>Гарах</span>
-					</a>
-				</li>
+			   <li>
+				   <a href="chat.php">
+					   <i class="fa fa-comments" aria-hidden="true"></i>
+					   <span>Чат</span>
+				   </a>
+			   </li>
+			   <li>
+				   <a href="logout.php">
+					   <i class="fa fa-sign-out" aria-hidden="true"></i>
+					   <span>Гарах</span>
+				   </a>
+			   </li>
 			</ul>
 		<?php } ?>
 		</nav>

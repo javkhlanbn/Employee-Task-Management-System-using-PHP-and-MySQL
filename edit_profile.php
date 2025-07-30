@@ -23,7 +23,8 @@ if (isset($_SESSION['role']) && isset($_SESSION['id']) && $_SESSION['role'] == "
 <h4 class="title">Профайл засах <a href="profile.php">Профайл</a></h4>
 		 <form class="form-1"
 				  method="POST"
-				  action="app/update-profile.php">
+				  action="app/update-profile.php"
+				  enctype="multipart/form-data">
 				  <?php if (isset($_GET['error'])) {?>
 			<div class="danger" role="alert">
 			  <?php echo stripcslashes($_GET['error']); ?>
@@ -38,6 +39,10 @@ if (isset($_SESSION['role']) && isset($_SESSION['id']) && $_SESSION['role'] == "
 				<div class="input-holder">
 <lable>Бүтэн нэр</lable>
 <input type="text" name="full_name" class="input-1" placeholder="Бүтэн нэр" value="<?=$user['full_name']?>"><br>
+				</div>
+				<div class="input-holder">
+<lable>Профайл зураг</lable>
+<input type="file" name="profile_image" class="input-1"><br>
 				</div>
 
 				<div class="input-holder">

@@ -19,9 +19,18 @@ if (isset($_SESSION['role']) && isset($_SESSION['id']) && $_SESSION['role'] == "
 	<?php include "inc/header.php" ?>
 	<div class="body">
 		<?php include "inc/nav.php" ?>
-		<section class="section-1">
+<section class="section-1">
 <h4 class="title">Профайл <a href="edit_profile.php">Засах</a></h4>
 		 <table class="main-table" style="max-width: 300px;">
+				<tr>
+<td colspan="2" style="text-align:center;">
+	<?php if (!empty($user['profile_image'])): ?>
+		<img src="<?=$user['profile_image']?>" alt="Profile Image" style="max-width:120px; border-radius:50%;">
+	<?php else: ?>
+		<img src="img/user.png" alt="Profile Image" style="max-width:120px; border-radius:50%;">
+	<?php endif; ?>
+</td>
+				</tr>
 				<tr>
 <td>Бүтэн нэр</td>
 					<td><?=$user['full_name']?></td>

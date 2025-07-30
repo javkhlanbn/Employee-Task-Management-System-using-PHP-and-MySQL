@@ -324,3 +324,10 @@
 	display: block;
     color: #fff;
 }
+tr.warning td {
+    background-color: #fff3cd; /* Шар */
+}
+
+tr.urgent td, tr.overdue td {
+    background-color: #f8d7da; /* Улаан */
+}
