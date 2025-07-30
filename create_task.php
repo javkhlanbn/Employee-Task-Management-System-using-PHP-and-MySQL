@@ -1,16 +1,16 @@
 <?php 
 session_start();
 if (isset($_SESSION['role']) && isset($_SESSION['id']) && $_SESSION['role'] == "admin") {
-    include "DB_connection.php";
-    include "app/Model/User.php";
+	include "DB_connection.php";
+	include "app/Model/User.php";
 
-    $users = get_all_users($conn);
+	$users = get_all_users($conn);
 
  ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Create Task</title>
+<title>Даалгавар үүсгэх</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/style.css">
 
@@ -21,45 +21,45 @@ if (isset($_SESSION['role']) && isset($_SESSION['id']) && $_SESSION['role'] == "
 	<div class="body">
 		<?php include "inc/nav.php" ?>
 		<section class="section-1">
-			<h4 class="title">Create Task </h4>
+<h4 class="title">Даалгавар үүсгэх</h4>
 		   <form class="form-1"
-			      method="POST"
-			      action="app/add-task.php">
-			      <?php if (isset($_GET['error'])) {?>
-      	  	<div class="danger" role="alert">
+				  method="POST"
+				  action="app/add-task.php">
+				  <?php if (isset($_GET['error'])) {?>
+			<div class="danger" role="alert">
 			  <?php echo stripcslashes($_GET['error']); ?>
 			</div>
-      	  <?php } ?>
+		  <?php } ?>
 
-      	  <?php if (isset($_GET['success'])) {?>
-      	  	<div class="success" role="alert">
+		  <?php if (isset($_GET['success'])) {?>
+			<div class="success" role="alert">
 			  <?php echo stripcslashes($_GET['success']); ?>
 			</div>
-      	  <?php } ?>
+		  <?php } ?>
 				<div class="input-holder">
-					<lable>Title</lable>
-					<input type="text" name="title" class="input-1" placeholder="Title"><br>
+<lable>Гарчиг</lable>
+<input type="text" name="title" class="input-1" placeholder="Гарчиг"><br>
 				</div>
 				<div class="input-holder">
-					<lable>Description</lable>
-					<textarea type="text" name="description" class="input-1" placeholder="Description"></textarea><br>
+					<lable>Тайлбар</lable>
+					<textarea type="text" name="description" class="input-1" placeholder="Тайлбар"></textarea><br>
 				</div>
 				<div class="input-holder">
-					<lable>Due Date</lable>
-					<input type="date" name="due_date" class="input-1" placeholder="Due Date"><br>
+<lable>Дуусах огноо</lable>
+<input type="date" name="due_date" class="input-1" placeholder="Дуусах огноо"><br>
 				</div>
 				<div class="input-holder">
-					<lable>Assigned to</lable>
+<lable>Хариуцагч</lable>
 					<select name="assigned_to" class="input-1">
-						<option value="0">Select employee</option>
+<option value="0">Ажилтан сонгох</option>
 						<?php if ($users !=0) { 
 							foreach ($users as $user) {
 						?>
-                  <option value="<?=$user['id']?>"><?=$user['full_name']?></option>
+				  <option value="<?=$user['id']?>"><?=$user['full_name']?></option>
 						<?php } } ?>
 					</select><br>
 				</div>
-				<button class="edit-btn">Create Task</button>
+<button class="edit-btn">Үүсгэх</button>
 			</form>
 			
 		</section>
@@ -72,7 +72,7 @@ if (isset($_SESSION['role']) && isset($_SESSION['id']) && $_SESSION['role'] == "
 </body>
 </html>
 <?php }else{ 
-   $em = "First login";
+   $em = "Анх удаа нэвтэрч байна";
    header("Location: login.php?error=$em");
    exit();
 }

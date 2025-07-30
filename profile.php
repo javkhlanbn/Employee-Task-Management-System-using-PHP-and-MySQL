@@ -1,15 +1,15 @@
 <?php 
 session_start();
 if (isset($_SESSION['role']) && isset($_SESSION['id']) && $_SESSION['role'] == "employee") {
-    include "DB_connection.php";
-    include "app/Model/User.php";
-    $user = get_user_by_id($conn, $_SESSION['id']);
-    
+	include "DB_connection.php";
+	include "app/Model/User.php";
+	$user = get_user_by_id($conn, $_SESSION['id']);
+	
  ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Profile</title>
+<title>Профайл</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/style.css">
 
@@ -20,18 +20,18 @@ if (isset($_SESSION['role']) && isset($_SESSION['id']) && $_SESSION['role'] == "
 	<div class="body">
 		<?php include "inc/nav.php" ?>
 		<section class="section-1">
-			<h4 class="title">Profile <a href="edit_profile.php">Edit Profile</a></h4>
-         <table class="main-table" style="max-width: 300px;">
+<h4 class="title">Профайл <a href="edit_profile.php">Засах</a></h4>
+		 <table class="main-table" style="max-width: 300px;">
 				<tr>
-					<td>Full Name</td>
+<td>Бүтэн нэр</td>
 					<td><?=$user['full_name']?></td>
 				</tr>
 				<tr>
-					<td>User name</td>
+<td>Хэрэглэгчийн нэр</td>
 					<td><?=$user['username']?></td>
 				</tr>
 				<tr>
-					<td>Joined At</td>
+<td>Бүртгүүлсэн огноо</td>
 					<td><?=$user['created_at']?></td>
 				</tr>
 			</table>
@@ -46,7 +46,7 @@ if (isset($_SESSION['role']) && isset($_SESSION['id']) && $_SESSION['role'] == "
 </body>
 </html>
 <?php }else{ 
-   $em = "First login";
+   $em = "Анх удаа нэвтэрч байна";
    header("Location: login.php?error=$em");
    exit();
 }

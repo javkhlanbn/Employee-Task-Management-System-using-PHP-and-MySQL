@@ -37,11 +37,11 @@ if (isset($_POST['title']) && isset($_POST['description']) && isset($_POST['assi
        $data = array($title, $description, $assigned_to, $due_date);
        insert_task($conn, $data);
 
-       $notif_data = array("'$title' has been assigned to you. Please review and start working on it", $assigned_to, 'New Task Assigned');
+       $notif_data = array("'$title' танд томилогдсон. Үүнийг хянаж үзээд ажлаа эхлүүлнэ үү", $assigned_to, 'Шинэ даалгавар өгсөн');
        insert_notification($conn, $notif_data);
 
 
-       $em = "Task created successfully";
+       $em = "Даалгаврыг амжилттай үүсгэсэн";
 	    header("Location: ../create_task.php?success=$em");
 	    exit();
 

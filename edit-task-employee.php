@@ -1,27 +1,27 @@
 <?php 
 session_start();
 if (isset($_SESSION['role']) && isset($_SESSION['id']) && $_SESSION['role'] == "employee") {
-    include "DB_connection.php";
-    include "app/Model/Task.php";
-    include "app/Model/User.php";
-    
-    if (!isset($_GET['id'])) {
-    	 header("Location: tasks.php");
-    	 exit();
-    }
-    $id = $_GET['id'];
-    $task = get_task_by_id($conn, $id);
+	include "DB_connection.php";
+	include "app/Model/Task.php";
+	include "app/Model/User.php";
+	
+	if (!isset($_GET['id'])) {
+		 header("Location: tasks.php");
+		 exit();
+	}
+	$id = $_GET['id'];
+	$task = get_task_by_id($conn, $id);
 
-    if ($task == 0) {
-    	 header("Location: tasks.php");
-    	 exit();
-    }
+	if ($task == 0) {
+		 header("Location: tasks.php");
+		 exit();
+	}
    $users = get_all_users($conn);
  ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Edit Task</title>
+<title>Даалгавар засах</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/style.css">
 
@@ -32,41 +32,40 @@ if (isset($_SESSION['role']) && isset($_SESSION['id']) && $_SESSION['role'] == "
 	<div class="body">
 		<?php include "inc/nav.php" ?>
 		<section class="section-1">
-			<h4 class="title">Edit Task <a href="my_task.php">Tasks</a></h4>
+<h4 class="title">Даалгавар засах <a href="my_task.php">Миний даалгавар</a></h4>
 			<form class="form-1"
-			      method="POST"
-			      action="app/update-task-employee.php">
-			      <?php if (isset($_GET['error'])) {?>
-      	  	<div class="danger" role="alert">
+				  method="POST"
+				  action="app/update-task-employee.php">
+				  <?php if (isset($_GET['error'])) {?>
+			<div class="danger" role="alert">
 			  <?php echo stripcslashes($_GET['error']); ?>
 			</div>
-      	  <?php } ?>
+		  <?php } ?>
 
-      	  <?php if (isset($_GET['success'])) {?>
-      	  	<div class="success" role="alert">
+		  <?php if (isset($_GET['success'])) {?>
+			<div class="success" role="alert">
 			  <?php echo stripcslashes($_GET['success']); ?>
 			</div>
-      	  <?php } ?>
+		  <?php } ?>
 				<div class="input-holder">
 					<lable></lable>
 					<p><b>Title: </b><?=$task['title']?></p>
 				</div>
 				<div class="input-holder">
 					<lable></lable>
-					<p><b>Description: </b><?=$task['description']?></p>
+					<p><b>Тайлбар: </b><?=$task['description']?></p>
 				</div><br>
-            <div class="input-holder">
-					<lable>Status</lable>
+			<div class="input-holder">
+<lable>Төлөв</lable>
 					<select name="status" class="input-1">
-						<option 
-						      <?php if( $task['status'] == "pending") echo"selected"; ?> >pending</option>
-						<option <?php if( $task['status'] == "in_progress") echo"selected"; ?>>in_progress</option>
-						<option <?php if( $task['status'] == "completed") echo"selected"; ?>>completed</option>
+<option <?php if( $task['status'] == "pending") echo"selected"; ?>>Хүлээгдэж буй</option>
+<option <?php if( $task['status'] == "in_progress") echo"selected"; ?>>Явагдаж байна</option>
+<option <?php if( $task['status'] == "completed") echo"selected"; ?>>Дууссан</option>
 					</select><br>
 				</div>
 				<input type="text" name="id" value="<?=$task['id']?>" hidden>
 
-				<button class="edit-btn">Update</button>
+<button class="edit-btn">Шинэчлэх</button>
 			</form>
 			
 		</section>
@@ -79,7 +78,7 @@ if (isset($_SESSION['role']) && isset($_SESSION['id']) && $_SESSION['role'] == "
 </body>
 </html>
 <?php }else{ 
-   $em = "First login";
+   $em = "Анх удаа нэвтэрч байна";
    header("Location: login.php?error=$em");
    exit();
 }

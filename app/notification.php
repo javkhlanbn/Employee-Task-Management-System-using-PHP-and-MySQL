@@ -9,7 +9,7 @@ if (isset($_SESSION['role']) && isset($_SESSION['id'])) {
     if ($notifications == 0) { ?>
         <li>
         <a href="#">
-            You have zero notification
+            Танд мэдэгдэл байхгүй байна
         </a>
         </li>
        

@@ -1,17 +1,17 @@
 <?php 
 session_start();
 if (isset($_SESSION['role']) && isset($_SESSION['id'])) {
-    include "DB_connection.php";
-    include "app/Model/Notification.php";
-    // include "app/Model/User.php";
+	include "DB_connection.php";
+	include "app/Model/Notification.php";
+	// include "app/Model/User.php";
 
-    $notifications = get_all_my_notifications($conn, $_SESSION['id']);
+	$notifications = get_all_my_notifications($conn, $_SESSION['id']);
 
  ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Notifications</title>
+<title>Мэдэгдэл</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/style.css">
 
@@ -22,19 +22,19 @@ if (isset($_SESSION['role']) && isset($_SESSION['id'])) {
 	<div class="body">
 		<?php include "inc/nav.php" ?>
 		<section class="section-1">
-			<h4 class="title">All Notifications</h4>
+<h4 class="title">Бүх мэдэгдэл</h4>
 			<?php if (isset($_GET['success'])) {?>
-      	  	<div class="success" role="alert">
+			<div class="success" role="alert">
 			  <?php echo stripcslashes($_GET['success']); ?>
 			</div>
 		<?php } ?>
 			<?php if ($notifications != 0) { ?>
 			<table class="main-table">
 				<tr>
-					<th>#</th>
-					<th>Message</th>
-					<th>Type</th>
-					<th>Date</th>
+<th>#</th>
+<th>Зурвас</th>
+<th>Төрөл</th>
+<th>Огноо</th>
 				</tr>
 				<?php $i=0; foreach ($notifications as $notification) { ?>
 				<tr>
@@ -46,7 +46,7 @@ if (isset($_SESSION['role']) && isset($_SESSION['id'])) {
 			   <?php	} ?>
 			</table>
 		<?php }else { ?>
-			<h3>You have zero notification</h3>
+<h3>Танд мэдэгдэл алга</h3>
 		<?php  }?>
 			
 		</section>
@@ -64,7 +64,7 @@ if (isset($_SESSION['role']) && isset($_SESSION['id'])) {
 </body>
 </html>
 <?php }else{ 
-   $em = "First login";
+   $em = "Анх удаа нэвтэрч байна";
    header("Location: login.php?error=$em");
    exit();
 }

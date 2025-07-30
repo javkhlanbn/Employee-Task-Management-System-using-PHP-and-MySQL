@@ -1,15 +1,15 @@
 <?php 
 session_start();
 if (isset($_SESSION['role']) && isset($_SESSION['id']) && $_SESSION['role'] == "employee") {
-    include "DB_connection.php";
-    include "app/Model/User.php";
-    $user = get_user_by_id($conn, $_SESSION['id']);
-    
+	include "DB_connection.php";
+	include "app/Model/User.php";
+	$user = get_user_by_id($conn, $_SESSION['id']);
+	
  ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Edit Profile</title>
+<title>Профайл засах</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/style.css">
 
@@ -20,40 +20,40 @@ if (isset($_SESSION['role']) && isset($_SESSION['id']) && $_SESSION['role'] == "
 	<div class="body">
 		<?php include "inc/nav.php" ?>
 		<section class="section-1">
-			<h4 class="title">Edit Profile <a href="profile.php">Profile</a></h4>
-         <form class="form-1"
-			      method="POST"
-			      action="app/update-profile.php">
-			      <?php if (isset($_GET['error'])) {?>
-      	  	<div class="danger" role="alert">
+<h4 class="title">Профайл засах <a href="profile.php">Профайл</a></h4>
+		 <form class="form-1"
+				  method="POST"
+				  action="app/update-profile.php">
+				  <?php if (isset($_GET['error'])) {?>
+			<div class="danger" role="alert">
 			  <?php echo stripcslashes($_GET['error']); ?>
 			</div>
-      	  <?php } ?>
+		  <?php } ?>
 
-      	  <?php if (isset($_GET['success'])) {?>
-      	  	<div class="success" role="alert">
+		  <?php if (isset($_GET['success'])) {?>
+			<div class="success" role="alert">
 			  <?php echo stripcslashes($_GET['success']); ?>
 			</div>
-      	  <?php } ?>
+		  <?php } ?>
 				<div class="input-holder">
-					<lable>Full Name</lable>
-					<input type="text" name="full_name" class="input-1" placeholder="Full Name" value="<?=$user['full_name']?>"><br>
+<lable>Бүтэн нэр</lable>
+<input type="text" name="full_name" class="input-1" placeholder="Бүтэн нэр" value="<?=$user['full_name']?>"><br>
 				</div>
 
 				<div class="input-holder">
-					<lable>Old Password</lable>
-					<input type="text" value="**********" name="password" class="input-1" placeholder="Old Password"><br>
+<lable>Хуучин нууц үг</lable>
+<input type="text" value="**********" name="password" class="input-1" placeholder="Хуучин нууц үг"><br>
 				</div>
 				<div class="input-holder">
-					<lable>New Password</lable>
-					<input type="text" name="new_password" class="input-1" placeholder="New Password"><br>
+<lable>Шинэ нууц үг</lable>
+<input type="text" name="new_password" class="input-1" placeholder="Шинэ нууц үг"><br>
 				</div>
 				<div class="input-holder">
-					<lable>Confirm Password</lable>
-					<input type="text" name="confirm_password" class="input-1" placeholder="Confirm Password"><br>
+<lable>Нууц үг баталгаажуулах</lable>
+<input type="text" name="confirm_password" class="input-1" placeholder="Нууц үг баталгаажуулах"><br>
 				</div>
 
-				<button class="edit-btn">Change</button>
+<button class="edit-btn">Өөрчлөх</button>
 			</form>
 
 		</section>
@@ -66,7 +66,7 @@ if (isset($_SESSION['role']) && isset($_SESSION['id']) && $_SESSION['role'] == "
 </body>
 </html>
 <?php }else{ 
-   $em = "First login";
+   $em = "Анх удаа нэвтэрч байна";
    header("Location: login.php?error=$em");
    exit();
 }

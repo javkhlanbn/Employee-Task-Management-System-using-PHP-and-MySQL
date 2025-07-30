@@ -1,17 +1,17 @@
 <?php 
 session_start();
 if (isset($_SESSION['role']) && isset($_SESSION['id'])) {
-    include "DB_connection.php";
-    include "app/Model/Task.php";
-    include "app/Model/User.php";
+	include "DB_connection.php";
+	include "app/Model/Task.php";
+	include "app/Model/User.php";
 
-    $tasks = get_all_tasks_by_id($conn, $_SESSION['id']);
+	$tasks = get_all_tasks_by_id($conn, $_SESSION['id']);
 
  ?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>My Tasks</title>
+<title>Миний даалгавар</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/style.css">
 
@@ -22,21 +22,22 @@ if (isset($_SESSION['role']) && isset($_SESSION['id'])) {
 	<div class="body">
 		<?php include "inc/nav.php" ?>
 		<section class="section-1">
-			<h4 class="title">My Tasks</h4>
+<h4 class="title">Миний даалгавар</h4>
 			<?php if (isset($_GET['success'])) {?>
-      	  	<div class="success" role="alert">
+			<div class="success" role="alert">
 			  <?php echo stripcslashes($_GET['success']); ?>
 			</div>
 		<?php } ?>
 			<?php if ($tasks != 0) { ?>
 			<table class="main-table">
 				<tr>
-					<th>#</th>
-					<th>Title</th>
-					<th>Description</th>
-					<th>Status</th>
-					<th>Due Date</th>
-					<th>Action</th>
+<th>#</th>
+<th>Гарчиг</th>
+<th>Тайлбар</th>
+<th>Төлөв</th>
+<th>Дуусах огноо</th>
+<th>Файл</th>
+<th>Үйлдэл</th>
 				</tr>
 				<?php $i=0; foreach ($tasks as $task) { ?>
 				<tr>
@@ -44,16 +45,22 @@ if (isset($_SESSION['role']) && isset($_SESSION['id'])) {
 					<td><?=$task['title']?></td>
 					<td><?=$task['description']?></td>
 					<td><?=$task['status']?></td>
-	            <td><?=$task['due_date']?></td>
-
+					<td><?=$task['due_date']?></td>
 					<td>
-						<a href="edit-task-employee.php?id=<?=$task['id']?>" class="edit-btn">Edit</a>
+						<?php if (!empty($task['attachment'])): ?>
+							<a href="uploads/<?=$task['attachment']?>" target="_blank">Файл татах</a>
+						<?php else: ?>
+							-
+						<?php endif; ?>
+					</td>
+					<td>
+						<a href="edit-task-employee.php?id=<?=$task['id']?>" class="edit-btn">Засах</a>
 					</td>
 				</tr>
 			   <?php	} ?>
 			</table>
 		<?php }else { ?>
-			<h3>Empty</h3>
+<h3>Хоосон</h3>
 		<?php  }?>
 			
 		</section>
@@ -69,7 +76,7 @@ if (isset($_SESSION['role']) && isset($_SESSION['id'])) {
 </body>
 </html>
 <?php }else{ 
-   $em = "First login";
+   $em = "Анх удаа нэвтэрч байна";
    header("Location: login.php?error=$em");
    exit();
 }

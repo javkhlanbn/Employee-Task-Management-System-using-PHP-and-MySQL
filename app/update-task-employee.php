@@ -26,20 +26,20 @@ if (isset($_POST['id']) && isset($_POST['status']) && $_SESSION['role'] == 'empl
        $data = array($status, $id);
        update_task_status($conn, $data);
 
-       $em = "Task updated successfully";
+       $em = "Ажлыг амжилттай шинэчилсэн";
 	    header("Location: ../edit-task-employee.php?success=$em&id=$id");
 	    exit();
 
     
 	}
 }else {
-   $em = "Unknown error occurred";
+   $em = "Үл мэдэгдэх алдаа гарлаа";
    header("Location: ../edit-task-employee.php?error=$em");
    exit();
 }
 
 }else{ 
-   $em = "First login";
+   $em = "Эхлээд нэвтэрнэ үү";
    header("Location: ../login.php?error=$em");
    exit();
 }
