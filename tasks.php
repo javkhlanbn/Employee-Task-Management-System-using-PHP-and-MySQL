@@ -49,11 +49,101 @@ if (isset($_SESSION['role']) && isset($_SESSION['id']) && $_SESSION['role'] == "
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/style.css">
 	<style>
-		tr.warning td { background-color: #fff176; }
-		tr.urgent td { background-color: #ff5252; }
-		tr.overdue td { background-color: #d50000; color: white; }
-		tr.completed td { background-color: #90caf9; color: #222; }
-		.main-table td, .main-table th { padding: 16px 10px; }
+		body {
+			background: #f4f6fb;
+			font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+			color: #222;
+		}
+		.main-table {
+			width: 100%;
+			border-collapse: separate;
+			border-spacing: 0 8px;
+			background: #fff;
+			border-radius: 12px;
+			box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+			margin-bottom: 32px;
+			overflow: hidden;
+		}
+		.main-table th {
+			background: #22223b;
+			color: #fff;
+			font-weight: 600;
+			padding: 18px 12px;
+			border: none;
+		}
+		.main-table td {
+			padding: 16px 12px;
+			border: none;
+			background: #fff;
+			font-size: 15px;
+		}
+		tr.warning td { background-color: #fff9c4 !important; }
+		tr.urgent td { background-color: #ffe0e0 !important; color: #b71c1c; }
+		tr.overdue td { background-color: #ff5252 !important; color: #fff; }
+		tr.completed td { background-color: #e3f2fd !important; color: #1976d2; }
+		.edit-btn, .delete-btn, .btn {
+			padding: 8px 18px;
+			border-radius: 6px;
+			border: none;
+			font-size: 15px;
+			font-weight: 500;
+			cursor: pointer;
+			transition: background 0.2s, color 0.2s;
+			margin-right: 6px;
+			text-decoration: none;
+		}
+		.edit-btn { background: #1976d2; color: #fff; }
+		.edit-btn:hover { background: #1565c0; }
+		.delete-btn { background: #d32f2f; color: #fff; }
+		.delete-btn:hover { background: #b71c1c; }
+		.btn { background: #43aa8b; color: #fff; margin-bottom: 10px; }
+		.btn:hover { background: #2d6a4f; }
+		.title-2 {
+			font-size: 1.3rem;
+			font-weight: 600;
+			margin: 24px 0 12px 0;
+			color: #22223b;
+		}
+		.success {
+			background: #e6ffed;
+			color: #256029;
+			border-left: 5px solid #43aa8b;
+			padding: 12px 18px;
+			border-radius: 6px;
+			margin-bottom: 18px;
+		}
+		.danger {
+			background: #fff0f0;
+			color: #b71c1c;
+			border-left: 5px solid #d32f2f;
+			padding: 12px 18px;
+			border-radius: 6px;
+			margin-bottom: 18px;
+		}
+		.filter-bar {
+			display: flex;
+			gap: 10px;
+			align-items: center;
+			flex-wrap: wrap;
+		}
+		.filter-link {
+			text-decoration: none !important;
+			color: #1976d2;
+			background: #e3f2fd;
+			padding: 7px 16px;
+			border-radius: 5px;
+			font-weight: 500;
+			transition: background 0.2s, color 0.2s;
+		}
+		.filter-link:hover {
+			background: #1976d2;
+			color: #fff;
+		}
+		@media (max-width: 900px) {
+			.main-table th, .main-table td { padding: 10px 4px; font-size: 13px; }
+			.title-2 { font-size: 1.1rem; }
+			.filter-bar { flex-direction: column; gap: 6px; }
+		}
 	</style>
 </head>
 <body>
@@ -62,13 +152,13 @@ if (isset($_SESSION['role']) && isset($_SESSION['id']) && $_SESSION['role'] == "
 	<div class="body">
 		<?php include "inc/nav.php" ?>
 		<section class="section-1">
-			<h4 class="title-2">
-				<a href="create_task.php" class="btn">Даалгавар үүсгэх</a>
-				<a href="tasks.php?due_date=Due Today">Өнөөдөр дуусах</a>
-				<a href="tasks.php?due_date=Overdue">Хоцорсон</a>
-				<a href="tasks.php?due_date=No Deadline">Хугацаагүй</a>
-				<a href="tasks.php">Бүх даалгаврууд</a>
-			</h4>
+<h4 class="title-2 filter-bar">
+	<a href="create_task.php" class="btn">Даалгавар үүсгэх</a>
+	<a href="tasks.php?due_date=Due Today" class="filter-link">Өнөөдөр дуусах</a>
+	<a href="tasks.php?due_date=Overdue" class="filter-link">Хоцорсон</a>
+	<a href="tasks.php?due_date=No Deadline" class="filter-link">Хугацаагүй</a>
+	<a href="tasks.php" class="filter-link">Бүх даалгаврууд</a>
+</h4>
 			
 
 			<h4 class="title-2"><?=$text?> (<?=$num_task?>)</h4>
